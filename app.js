@@ -80,7 +80,7 @@
   /* strzałki do torów poziomych (komputer) */
   [].forEach.call(d.querySelectorAll('.tor-poziomy'), function (tor) {
     var kafle = tor.querySelectorAll('.kafel');
-    [].forEach.call(kafle, function (k, i) { var s = d.createElement('span'); s.className = 'licznik licznik-kafel'; s.textContent = (i + 1) + ' / ' + kafle.length; k.appendChild(s); });
+    [].forEach.call(kafle, function (k, i) { var s = d.createElement('span'); s.className = 'licznik'; s.textContent = (i + 1) + ' / ' + kafle.length; k.appendChild(s); });
     var nav = d.createElement('div'); nav.className = 'tor-nav';
     nav.innerHTML = '<button type="button" class="strz-t" aria-label="Poprzednie zdjęcia">' + strzL + '</button><button type="button" class="strz-t" aria-label="Następne zdjęcia">' + strzP + '</button>';
     tor.parentNode.insertBefore(nav, tor);
