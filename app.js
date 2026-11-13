@@ -54,7 +54,7 @@
   var strzP = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg>';
   [].forEach.call(d.querySelectorAll('[data-galeria]'), function (g) {
     var tor = g.querySelector('.tor'), n = tor.children.length;
-    if (n < 2) return;
+    if (n < 2) { var c1 = d.createElement('span'); c1.className = 'licznik'; c1.textContent = '1 / 1'; g.appendChild(c1); return; }
     var nazwa = g.dataset.nazwa || '';
     tor.setAttribute('tabindex', '0');
     tor.setAttribute('aria-label', 'Zdjęcia ' + nazwa + ', przesuń w bok');
@@ -79,6 +79,8 @@
 
   /* strzałki do torów poziomych (komputer) */
   [].forEach.call(d.querySelectorAll('.tor-poziomy'), function (tor) {
+    var kafle = tor.querySelectorAll('.kafel');
+    [].forEach.call(kafle, function (k, i) { var s = d.createElement('span'); s.className = 'licznik licznik-kafel'; s.textContent = (i + 1) + ' / ' + kafle.length; k.appendChild(s); });
     var nav = d.createElement('div'); nav.className = 'tor-nav';
     nav.innerHTML = '<button type="button" class="strz-t" aria-label="Poprzednie zdjęcia">' + strzL + '</button><button type="button" class="strz-t" aria-label="Następne zdjęcia">' + strzP + '</button>';
     tor.parentNode.insertBefore(nav, tor);
